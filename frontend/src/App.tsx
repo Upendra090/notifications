@@ -13,6 +13,7 @@ function App() {
   async function accessNotificationRequest() {
     try {
       let permission = Notification.permission;
+      console.log(permission);
       if (permission === "default") {
         permission = await Notification.requestPermission();
         console.log("permission: ", permission);
@@ -31,6 +32,14 @@ function App() {
         } else {
           console.log("Notification request permission denied.");
         }
+      }
+      if (permission === "granted" && !currentToken) {
+        const generateToken = await getToken(messaging, {
+          vapidKey: vapidId,
+        });
+        console.log("generate token: ", generateToken);
+        await saveToken(generateToken);
+        localStorage.setItem("fcmToken", generateToken);
       }
     } catch (err) {
       console.log("ERR", err);

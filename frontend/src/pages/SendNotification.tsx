@@ -20,6 +20,7 @@ export default function SendNotificaiton() {
     try {
       const response = await sendNotification(data);
       if (response.status === 200) {
+        console.log(response);
         console.log("notificaiton send");
       } else {
         console.log("something went wrong");
