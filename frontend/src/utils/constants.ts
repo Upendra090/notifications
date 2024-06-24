@@ -8,4 +8,4 @@ export const appId = import.meta.env.VITE_APP_FIREBASE_APPID;
 export const measurementId = import.meta.env.VITE_APP_FIREBASE_MEASUREMENTID;
 export const vapidId = import.meta.env.VITE_APP_FIREBASE_VAPID_ID;
 
-export const baseApiUrl = "http://localhost:8000/api/v1";
+export const baseApiUrl = "https://notifications-b.onrender.com/api/v1";
