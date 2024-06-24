@@ -25,7 +25,7 @@ function App() {
             });
             console.log("generate token: ", generateToken);
             await saveToken(generateToken);
-            localStorage.setItem("fcmToken", generateToken);
+            localStorage.setItem("fcmToken", "Hello generated token");
           } else {
             console.log("Token already stored.");
           }
@@ -39,7 +39,7 @@ function App() {
         });
         console.log("generate token: ", generateToken);
         await saveToken(generateToken);
-        localStorage.setItem("fcmToken", generateToken);
+        localStorage.setItem("fcmToken", "Hello generated token");
       }
     } catch (err) {
       console.log("ERR", err);
@@ -50,7 +50,7 @@ function App() {
     accessNotificationRequest();
   }, []);
 
-  async function saveToken(token: string) {
+  async function saveToken(token: any) {
     try {
       await saveTokens(token);
       console.log("Token saved");
