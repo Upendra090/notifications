@@ -35,30 +35,30 @@ messaging.onBackgroundMessage((payload) => {
 //   event.waitUntil(self.clients.openWindow(urlToRedirect));
 // });
 
-self.addEventListener("notificationclick", (event) => {
-  console.log("notificationclick", event);
-  const urlToRedirect = event.notification.data.click_action;
-  event.notification.close();
+// self.addEventListener("notificationclick", (event) => {
+//   console.log("notificationclick", event);
+//   const urlToRedirect = event.notification.data.click_action;
+//   event.notification.close();
 
-  event.waitUntil(
-    clients
-      .matchAll({ type: "window", includeUncontrolled: true })
-      .then((clientsArr) => {
-        const hadWindowToFocus = clientsArr.some((windowClient) => {
-          if (windowClient.url === urlToRedirect) {
-            windowClient.focus();
-            return true;
-          }
-          return false;
-        });
+//   event.waitUntil(
+//     clients
+//       .matchAll({ type: "window", includeUncontrolled: true })
+//       .then((clientsArr) => {
+//         const hadWindowToFocus = clientsArr.some((windowClient) => {
+//           if (windowClient.url === urlToRedirect) {
+//             windowClient.focus();
+//             return true;
+//           }
+//           return false;
+//         });
 
-        if (!hadWindowToFocus) {
-          clients
-            .openWindow(urlToRedirect)
-            .then((windowClient) =>
-              windowClient ? windowClient.focus() : null
-            );
-        }
-      })
-  );
-});
+//         if (!hadWindowToFocus) {
+//           clients
+//             .openWindow(urlToRedirect)
+//             .then((windowClient) =>
+//               windowClient ? windowClient.focus() : null
+//             );
+//         }
+//       })
+//   );
+// });
